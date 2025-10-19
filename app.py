@@ -15,9 +15,9 @@ st.markdown(
     """
     <style>
     .banner-img img {
-        height: 250px;   /* Decrease this value to reduce height */
-        width: 1600px;   /* Increase this value to make it wider */
-        object-fit: cover; /* Ensures the image scales nicely */
+        height: 250px;   
+        width: 1600px;   
+        object-fit: cover;
         border-radius: 10px;
     }
     </style>
@@ -71,4 +71,5 @@ with st.expander("How to Use"):
 
 # Footer
 st.markdown("---")
-st.markdown("Built with Streamlit | Model: Linear Regression on Retail Transactions")
+
+st.markdown("Model: Linear Regression on Retail Transactions")
