@@ -16,8 +16,8 @@ st.markdown(
     <style>
     .banner-img img {
         height: 250px;   
-        width: 1600px;   
-        object-fit: cover;
+        width: 1600px;  
+        object-fit: cover; 
         border-radius: 10px;
     }
     </style>
@@ -38,17 +38,19 @@ st.title("Retail Transaction Total Amount Predictor")
 
 # Sidebar for inputs
 st.sidebar.header("Enter Transaction Details")
-quantity = st.sidebar.number_input("Quantity", min_value=1, max_value=10, value=5)
-price = st.sidebar.number_input("Price ($)", min_value=0.0, max_value=100.0, value=50.0)
-
+quantity = st.sidebar.number_input("Quantity", min_value=1, max_value=10)
+price = st.sidebar.number_input("Price ($)", min_value=0.0, max_value=100.0, value= 50.0)
+discount = st.sidebar.number_input("Discount(%)   ...If there's any", min_value=0.0)
 # Prediction button
 if st.sidebar.button("Predict Total Amount"):
     # Prepare input data
     input_data = pd.DataFrame({
         'Quantity': [quantity],
-        'Price': [price]
+        'Price': [price],
+        'DiscountApplied(%)' : [discount]
     })
     # Make prediction
+    input_data = input_data[model.feature_names_in_]
     prediction = model.predict(input_data)[0]
 
     # Display prediction
@@ -71,5 +73,4 @@ with st.expander("How to Use"):
 
 # Footer
 st.markdown("---")
-
-st.markdown("Model: Linear Regression on Retail Transactions")
+st.markdown(" Model: Linear Regression on Retail Transactions")
